@@ -31,25 +31,15 @@ Install all the necessary dependencies for both the server and client:
 npm run install-all
 ```
 
-### 3. Configure Environment Variables
 
-Create a `.env` file inside the `server` folder with the following content:
-
-```
-DATABASE_URL="file:./prisma/dev.db"
-PORT=5000
-```
-
-> You can also copy from `.env.example` and remove the '.example' for default needed.
-
-### 4. Set Up the Database
+### 3. Set Up the Database
 
 To initialize the database and apply all necessary migrations, run:
 
 ```bash
 npm run setup-db
 ```
-
+This will rename .env.example to .env which will allow the database setup to start.
 This will create the database file and apply the schema, but won’t seed any data yet.
 
 To populate the database with default users and sample data, run:
