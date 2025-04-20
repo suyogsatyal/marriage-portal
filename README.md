@@ -19,7 +19,7 @@ To set up the project locally, follow the steps below:
 First, clone the repository to your local machine:
 
 ```
-git clone https://github.com/your-username/marriage-portal.git
+git clone https://github.com/suyogsatyal/marriage-portal.git
 cd marriage-portal
 ```
 
@@ -42,7 +42,6 @@ PORT=5000
 
 > You can also copy from `.env.example` and remove the '.example' for default needed.
 
-### 4. Set Up the Database
 ### 4. Set Up the Database
 
 To initialize the database and apply all necessary migrations, run:
