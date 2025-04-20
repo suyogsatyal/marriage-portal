@@ -22,19 +22,28 @@ const UserDashboard = () => {
     const [applications, setApplications] = useState<Application[]>([])
     const navigate = useNavigate()
 
+    const [loading, setLoading] = useState(true)
+
     useEffect(() => {
         const fetchApplications = async () => {
             try {
                 const res = await getMyApplications()
-                const filtered = res.data.map((app: any) => ({
+                const rawData = res?.data ?? []
+
+                if (!Array.isArray(rawData)) throw new Error("Invalid response")
+
+                const filtered = rawData.map((app: any) => ({
                     id: app.id,
                     husbandName: app.husbandName,
                     wifeName: app.wifeName,
                     status: app.status,
                 }))
+
                 setApplications(filtered)
             } catch (err) {
                 notifyError("Failed to fetch applications")
+            } finally {
+                setLoading(false)
             }
         }
 
@@ -109,6 +118,7 @@ const UserDashboard = () => {
         </Card>
     )
 
+    if (loading) return <div className="text-center py-12 text-muted-foreground">Loading applications...</div>
 
     return (
         <div className="min-h-screen flex flex-col bg-gray-50">

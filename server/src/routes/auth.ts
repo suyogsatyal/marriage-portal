@@ -8,7 +8,9 @@ const prisma = new PrismaClient()
 
 authRouter.post('/login', async (req: Request, res: Response): Promise<any> => {
     const { email, password } = req.body
-
+    console.log("Login Request Body:", req.body)
+    console.log("Email:", email)
+    console.log("Password:", password)
     try {
         const user = await prisma.user.findUnique({ where: { email } })
 
@@ -58,7 +60,7 @@ authRouter.post('/register', async (req: Request, res: Response): Promise<any> =
                 name,
                 email,
                 password: hashedPassword,
-                role: 'USER', // or 'ADMIN' if you want to allow role from request
+                role: 'user', // or 'ADMIN' if you want to allow role from request
             },
         })
 

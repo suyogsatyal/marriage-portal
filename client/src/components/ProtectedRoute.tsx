@@ -1,4 +1,3 @@
-// src/components/ProtectedRoute.tsx
 import { Navigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 
@@ -8,10 +7,12 @@ interface Props {
 }
 
 const ProtectedRoute = ({ children, role }: Props) => {
-    const { isAuthenticated, user } = useAuth()
+    const { isAuthenticated, user, loading } = useAuth()
+
+    if (loading) return null // or a spinner/placeholder if you want
 
     if (!isAuthenticated) return <Navigate to="/login" />
-    if (user?.role !== role) return <Navigate to="/" /> // or a 403 page
+    if (user?.role !== role) return <Navigate to="/" />
 
     return <>{children}</>
 }

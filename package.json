@@ -9,7 +9,8 @@
     "dev:server": "npm --prefix server run dev",
     "dev:client": "npm --prefix client run dev",
     "reset-db": "npm --prefix server run reset-db",
-    "setup": "npm run reset-db && npm run dev"
+    "setup": "npm run reset-db && npm run dev",
+    "seed": "npm --prefix server run seed"
   },
   "devDependencies": {
     "concurrently": "^8.0.0",

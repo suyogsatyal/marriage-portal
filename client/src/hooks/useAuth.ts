@@ -1,14 +1,16 @@
-// src/hooks/useAuth.ts
+import { useEffect, useState } from "react"
+
 export const useAuth = () => {
-  const token = localStorage.getItem('token')
-  const userStr = localStorage.getItem('user')
+  const [user, setUser] = useState<any>(null)
+  const [loading, setLoading] = useState(true)
 
-  if (!token || !userStr) return { isAuthenticated: false, user: null }
+  useEffect(() => {
+    const stored = localStorage.getItem("user")
+    if (stored) setUser(JSON.parse(stored))
+    setLoading(false)
+  }, [])
 
-  try {
-    const user = JSON.parse(userStr)
-    return { isAuthenticated: true, user }
-  } catch {
-    return { isAuthenticated: false, user: null }
-  }
+  const isAuthenticated = !!user
+
+  return { user, isAuthenticated, loading }
 }
