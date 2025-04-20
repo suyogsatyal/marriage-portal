@@ -105,6 +105,7 @@ npm run host
 - `dev:client`: Run only the frontend in dev mode
 - `reset-db`: Reset the database and apply migrations
 - `setup`: Reset DB and start both dev servers (requires `.env` file)
+- `seed` Seed the database with data from `server/prisma/seed.js`
 
 ## Folder Structure
 
