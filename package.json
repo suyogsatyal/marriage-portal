@@ -1,7 +1,7 @@
 {
   "name": "marriage-portal",
   "scripts": {
-    "install-all": "npm install && npm --prefix server install && npm --prefix client install && npm --prefix server run setup-db",
+    "install-all": "npm install && npm --prefix server install && npm --prefix client install",
     "setup-db": "npm --prefix server run reset-db",
     "build": "npm --prefix client run build && npm --prefix server run build",
     "host": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
