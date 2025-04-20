@@ -1,0 +1,18 @@
+{
+  "name": "marriage-portal",
+  "scripts": {
+    "install-all": "npm install && npm --prefix server install && npm --prefix client install && npm --prefix server run setup-db",
+    "setup-db": "npm --prefix server run reset-db",
+    "build": "npm --prefix client run build && npm --prefix server run build",
+    "host": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "npm --prefix server run dev",
+    "dev:client": "npm --prefix client run dev",
+    "reset-db": "npm --prefix server run reset-db",
+    "setup": "npm run reset-db && npm run dev"
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.0",
+    "nodemon": "^2.0.0"
+  }
+}

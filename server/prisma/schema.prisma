@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  role      String // "user" or "admin"
+  createdAt DateTime @default(now())
+
+  marriageApplications MarriageApplication[]
+}
+
+model MarriageApplication {
+  id                   Int      @id @default(autoincrement())
+  husbandName          String
+  wifeName             String
+  husbandCitizenshipNo String
+  wifeCitizenshipNo    String
+  dateOfMarriage       DateTime
+  witnessName          String
+  witnessCitizenshipNo String
+  status               String // pending | approved | rejected
+  certificateId        Int?     @unique
+  userId               Int
+  user                 User     @relation(fields: [userId], references: [id])
+
+  certificate Certificate?
+}
+
+model Certificate {
+  id            Int                 @id @default(autoincrement())
+  applicationId Int                 @unique
+  issuedAt      DateTime            @default(now())
+  application   MarriageApplication @relation(fields: [applicationId], references: [id])
+}
