@@ -19,7 +19,7 @@ To set up the project locally, follow the steps below:
 First, clone the repository to your local machine:
 
 ```
-git clone https://github.com/your-username/marriage-portal.git
+git clone https://github.com/suyogsatyal/marriage-portal.git
 cd marriage-portal
 ```
 
