@@ -43,7 +43,6 @@ PORT=5000
 > You can also copy from `.env.example` and remove the '.example' for default needed.
 
 ### 4. Set Up the Database
-### 4. Set Up the Database
 
 To initialize the database and apply all necessary migrations, run:
 
